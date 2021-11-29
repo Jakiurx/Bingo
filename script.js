@@ -1,9 +1,14 @@
-//global variables
+//GLOBAL VARIABLES
 let arr = [];                                                                                   //array of numbers
 let bitmap = [[0, 0, 0, 0, 0],[0, 0, 0, 0, 0],[0, 0, 0, 0, 0],[0, 0, 0, 0, 0],[0, 0, 0, 0, 0]]; //bitmap
 let auto = 0;
 var autos = false;
-//----------------
+var dis = true;
+var speakerBool = true;
+
+//TEXT TO SPEECH
+let speech = new SpeechSynthesisUtterance();
+speech.lang = "pl";
 
 function win(){
     document.getElementById("end").innerHTML = "Wygrałeś";
@@ -42,16 +47,14 @@ function start() {
     clr();
     for (let i = 0; i <= 24; i++) document.getElementById("cell" + i).innerHTML = random_number();
     arr = [];
+    document.getElementById("drawButton").disabled = false;
+    document.getElementById("autodrawButton").disabled = false;
 }
 
 function draw() {
     let randomNumber = random_number();
     document.getElementById("ball1").innerHTML = randomNumber;
-    //SPEECH
-    speech.text = randomNumber;
-    window.speechSynthesis.speak(speech)
-
-    //------
+    speaking(randomNumber);
     if (arr.length > 1) document.getElementById("results").innerHTML = "<div class=sball>" + arr[arr.length - 2] + "</div>" + document.getElementById("results").innerHTML
 }
 
@@ -76,14 +79,25 @@ function clr() {
 }
 
 function autoDraw(){
+    dis = !dis;
+    if(dis) document.getElementById("drawButton").disabled = false;
+    else document.getElementById("drawButton").disabled = true;
     auto = !auto;
     if(auto) autos = window.setInterval(draw,2000);
     else clearInterval(autos);
 }
 
+function speaking(x){
+    if(speakerBool){
+    speech.text = x;
+    window.speechSynthesis.speak(speech)
+    }
+}
+
+function changeSpeaking(){
+    if(speakerBool) document.getElementById("speaker").src = "speaker_off.png";
+    else document.getElementById("speaker").src = "speaker_on.png";
+    speakerBool = !speakerBool
+}
 
 
-// TEXT TO SPEECH
-
-let speech = new SpeechSynthesisUtterance();
-speech.lang = "pl";

@@ -12,6 +12,7 @@ table {
 	display: block;
 	width: 235px;
 	margin:auto;
+	margin-bottom: 10px;
 	border-style:solid; 
 	border-width:3px;
 	border-color:black;
@@ -68,12 +69,21 @@ h3{
 	justify-content: center;
 	align-items: center;
 }
+#speaker{
+	margin-left: 0%;
+	margin: 4px;
+	width: 20px;
+	height: 20px;
+	text-align: end;
+	display: flex;
+}
 
 #right{
 	float: left;
 	width: 50%;
 	background-color: #f1a436;
 	text-align: center;
+	
 }
 #footer{
 	float: left;
