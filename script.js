@@ -80,8 +80,14 @@ function clr() {
 
 function autoDraw(){
     dis = !dis;
-    if(dis) document.getElementById("drawButton").disabled = false;
-    else document.getElementById("drawButton").disabled = true;
+    if(dis) {
+        document.getElementById("drawButton").disabled = false;
+        document.getElementById("startButton").disabled = false;
+    }
+    else {
+        document.getElementById("drawButton").disabled = true;
+        document.getElementById("startButton").disabled = true;
+    }
     auto = !auto;
     if(auto) autos = window.setInterval(draw,2000);
     else clearInterval(autos);
