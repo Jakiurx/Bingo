@@ -14,6 +14,8 @@ function win(){
     document.getElementById("end").innerHTML = "Wygrałeś";
     document.getElementById("image").style.display = "block";
     document.getElementById("table").style.display = "none";
+    document.getElementById("drawButton").disabled = true;
+    document.getElementById("autodrawButton").disabled = true;
 }
 
 function check(i, j) {
@@ -70,6 +72,8 @@ function random_number() {
 function clr() {
     arr = [];
     for (let i = 0; i <= 24; i++) document.getElementById("cell" + i).style.backgroundColor = "#f1c936"
+    document.getElementById("drawButton").disabled = false;
+    document.getElementById("autodrawButton").disabled = false;
     document.getElementById("ball1").innerHTML = "";
     document.getElementById("results").innerHTML = "";
     document.getElementById("table").style.display = "block";
